@@ -159,8 +159,8 @@ button:active {
   .page {
     margin-top: -30%;
    
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
     padding: 2rem 0.75rem;
     align-items: center; /* center like login form */
   }
