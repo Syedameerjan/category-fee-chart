@@ -148,7 +148,7 @@ function App() {
         </div>
 
 <div className="button-wrapper">
-  <button onClick={fetchAmount}>FETCH DATA</button>
+  <button onClick={fetchAmount}>FIND AMOUNT</button>
 </div>
 
 
