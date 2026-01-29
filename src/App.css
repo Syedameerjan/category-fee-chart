@@ -149,6 +149,14 @@ button:active {
   border-color: #0a53be;
 }
 
+
+.clear-btn {
+  margin-left: 10px;
+  background-color: #e53935;
+  color: white;
+}
+
+
 /* ==============================
    MEDIA QUERIES
 ================================ */
