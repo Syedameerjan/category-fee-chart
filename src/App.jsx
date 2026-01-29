@@ -59,6 +59,9 @@ function App() {
   //   return "Below 1 Year";
   // };
 
+const handleClear = () => {
+  window.location.reload();
+};
 
 
 
@@ -149,6 +152,7 @@ function App() {
 
 <div className="button-wrapper">
   <button onClick={fetchAmount}>FIND AMOUNT</button>
+  <button onClick={handleClear} className="clear-btn">CLEAR</button>
 </div>
 
 
