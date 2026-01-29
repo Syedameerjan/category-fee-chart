@@ -125,7 +125,7 @@ function App() {
   return (
     <div className="page">
        <div className="name-board">
-<h2>Category Fee Chart</h2>
+<h2>New Fees Chart</h2>
 
       <div className="row">
 
