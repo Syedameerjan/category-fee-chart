@@ -199,4 +199,18 @@ button:active {
   button {
     padding: 0.60rem 0.85rem;
   }
+
+   .button-wrapper {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+   .button-wrapper button {
+    width: 100%;
+    min-width: unset;
+  }
+
+   .clear-btn {
+    margin-left: 0; /* remove desktop spacing */
+  }
 }
