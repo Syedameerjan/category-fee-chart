@@ -8,6 +8,7 @@ function App() {
   const [regDate, setRegDate] = useState("");
   const [ageGroup, setAgeGroup] = useState("");
   const [amount, setAmount] = useState("");
+  const [vehicleAge, setVehicleAge] = useState("");
 
   // 🔹 Normalize helper
   const normalize = str =>
@@ -59,6 +60,27 @@ function App() {
   //   return "Below 1 Year";
   // };
 
+  
+ // 🔹 Vehicle age (exact day)
+const calculateVehicleAge = (date) => {
+  if (!date) return "";
+
+  const regDate = new Date(date);
+  const today = new Date();
+
+  let years = today.getFullYear() - regDate.getFullYear();
+  let months = today.getMonth() - regDate.getMonth();
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  return `${years} Years ${months} Months`;
+};
+  
+
+  
 const handleClear = () => {
   window.location.reload();
 };
@@ -99,6 +121,7 @@ const handleClear = () => {
     const value = e.target.value;
     setRegDate(value);
     setAgeGroup(calculateAgeGroup(value));
+    setVehicleAge(calculateVehicleAge(value));
   };
 
   // 🔹 Fetch Total amount
@@ -125,6 +148,7 @@ const handleClear = () => {
     )
   ];
 
+
   return (
     <div className="page">
        <div className="name-board">
@@ -144,6 +168,7 @@ const handleClear = () => {
         <input type="date" value={regDate} onChange={handleDateChange} />
 
         <input type="text" value={ageGroup} placeholder="Age Group" readOnly />
+        <input type="text" value={vehicleAge} placeholder="Vehicle Age" readOnly />
 
         <input type="text" value={amount} placeholder="Total Amount" readOnly />
 
