@@ -183,6 +183,46 @@ const handleClear = () => {
   ];
 
 
+const getVehicleIcon = (type, category) => {
+  const value = normalize(category);
+
+  // 🛺 Auto
+  if (value.includes("A/R GOODS")) return "🛺📦";
+  if (value === "A/R") return "🛺";
+
+  // 🚗 Cars
+  if (value.includes("M/CAB") && value.includes("7")) return "🚙"; // SUV (Innova type)
+  if (value.includes("M/CAB")) return "🚗";
+
+  // 🚑 Ambulance
+  if (value.includes("AMBULANCE")) return "🚑";
+
+  // 🛻 Light vehicles (Mahindra / Tata / LMV)
+  if (value.includes("MAHINDRA") || value.includes("TATA") || value.includes("LMV")) {
+    return "🛻"; // pickup / light truck
+  }
+
+  // 🚌 Bus
+  if (value.includes("BUS")) return "🚌";
+
+  // 🚚 Medium Goods Vehicle
+  if (value.includes("MGV")) return "🚚";
+
+  // 🚛 Heavy Vehicles (based on wheels)
+  if (value.includes("HGV")) {
+    if (value.includes("10")) return "🚛"; // medium heavy
+    if (value.includes("12")) return "🚛🚛"; // fake variation
+    if (value.includes("14")) return "🚛🚛🚛";
+    if (value.includes("16")) return "🚛🚛🚛🚛";
+    return "🚛";
+  }
+
+  return "🚘"; // fallback
+};
+
+
+  
+
   return (
     <div className="page">
        <div className="name-board">
@@ -208,7 +248,7 @@ const handleClear = () => {
 
         
         </div>
-         <div className="animation-area">
+         {/* <div className="animation-area">
   {animationType && (
     <div className={`vehicle ${animationType} ${animationPhase}`}>
       {animationType === "auto" && "🛺"}
@@ -218,7 +258,19 @@ const handleClear = () => {
       {animationType === "ambulance" && "🚑"}
     </div>
   )}
+</div> */}
+
+
+<div className="animation-area">
+  {animationType && (
+    <div className={`vehicle ${animationPhase}`}>
+      {getVehicleIcon(animationType, category)}
+    </div>
+  )}
 </div>
+
+
+         
 <div className="button-wrapper">
   <button onClick={fetchAmount}>FIND AMOUNT</button>
   <button onClick={handleClear} className="clear-btn">CLEAR</button>
