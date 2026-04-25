@@ -9,6 +9,7 @@ function App() {
   const [ageGroup, setAgeGroup] = useState("");
   const [amount, setAmount] = useState("");
   const [vehicleAge, setVehicleAge] = useState("");
+  const [animationType, setAnimationType] = useState("");
 
   // 🔹 Normalize helper
   const normalize = str =>
@@ -78,7 +79,33 @@ const calculateVehicleAge = (date) => {
 
   return `${years} Years ${months} Months`;
 };
-  
+
+// Animation
+
+  const triggerAnimation = (category) => {
+  let type = "";
+
+  const value = category.toUpperCase();
+
+  if (value.includes("A/R GOODS")) {
+    type = "autoGoods";
+  } else if (value.includes("A/R")) {
+    type = "auto";
+  } else if (value.includes("M/CAB 7")) {
+    type = "car7";
+  } else if (value.includes("M/CAB")) {
+    type = "car";
+  } else if (value.includes("AMBULANCE")) {
+    type = "ambulance";
+  }
+
+  setAnimationType(type);
+
+  // remove after 1 second
+  setTimeout(() => {
+    setAnimationType("");
+  }, 1000);
+};
 
   
 const handleClear = () => {
@@ -158,7 +185,7 @@ const handleClear = () => {
 
        
 
-        <select value={category} onChange={e => setCategory(e.target.value)}>
+       <select value={category}  onChange={e => { const value = e.target.value;  setCategory(value); triggerAnimation(value); }} >
           <option value="">Select Category</option>
           {categories.map(c => (
             <option key={c} value={c}>{c}</option>
@@ -174,6 +201,13 @@ const handleClear = () => {
 
         
         </div>
+         <div className="animation-area">
+  {animationType === "auto" && <div className="vehicle auto">🛺</div>}
+  {animationType === "autoGoods" && <div className="vehicle autoGoods">🛺📦</div>}
+  {animationType === "car" && <div className="vehicle car">🚗</div>}
+  {animationType === "car7" && <div className="vehicle car7">🚙</div>}
+  {animationType === "ambulance" && <div className="vehicle ambulance">🚑</div>}
+</div>
 
 <div className="button-wrapper">
   <button onClick={fetchAmount}>FIND AMOUNT</button>
