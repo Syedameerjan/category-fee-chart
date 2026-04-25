@@ -82,31 +82,32 @@ const calculateVehicleAge = (date) => {
 
 // Animation
 
-  const triggerAnimation = (category) => {
+const triggerAnimation = (category) => {
   let type = "";
 
-  const value = category.toUpperCase();
+  const value = normalize(category); // 🔥 IMPORTANT
 
-  if (value.includes("A / R GoodS")) {
+  if (value.includes("A/R GOODS")) {
     type = "autoGoods";
-  } else if (value.includes("A / R")) {
+  } else if (value === "A/R") {
     type = "auto";
-  } else if (value.includes("M / Cab, 7 seater")) {
+  } else if (value.includes("M/CAB 7 SEATER")) {
     type = "car7";
-  } else if (value.includes("M / Cab")) {
+  } else if (value.includes("M/CAB")) {
     type = "car";
-  } else if (value.includes("Ambulance")) {
+  } else if (value.includes("AMBULANCE")) {
     type = "ambulance";
   }
 
-  setAnimationType(type);
-
-  // remove after 1 second
+  // 🔥 Force re-trigger animation
+  setAnimationType("");
   setTimeout(() => {
-    setAnimationType("");
-  }, 1000);
-};
+    setAnimationType(type);
+  }, 10);
 
+  // Debug (optional)
+  console.log("Normalized Category:", value);
+};
   
 const handleClear = () => {
   window.location.reload();
