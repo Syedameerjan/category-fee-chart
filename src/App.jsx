@@ -20,7 +20,7 @@ function App() {
 
   // 🔹 Load & process Excel ONCE
   useEffect(() => {
-    fetch("/All_Category_Fee_Chart (1).xlsx")
+    fetch("/All_Category_Fee_Chart (2).xlsx")
       .then(res => res.arrayBuffer())
       .then(buffer => {
         const wb = XLSX.read(buffer, { type: "array" });
