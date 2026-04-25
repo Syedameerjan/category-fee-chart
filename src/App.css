@@ -158,6 +158,35 @@ button:active {
 
 
 /* ==============================
+   ANIMATION
+================================ */
+.animation-area {
+  position: relative;
+  height: 60px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.vehicle {
+  position: absolute;
+  left: -50px;
+  font-size: 40px;
+  animation: drive 1s linear forwards;
+}
+
+@keyframes drive {
+  from {
+    left: -50px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+
+
+
+/* ==============================
    MEDIA QUERIES
 ================================ */
 
