@@ -165,7 +165,7 @@ const handleClear = () => {
           ))}
         </select>
 
-        <input type="date" value={regDate} onChange={handleDateChange} />
+        <input type="date" value={regDate} onChange={handleDateChange} onKeyDown={(e) => {if (e.key === "Enter") {fetchAmount();}  }} />
 
         <input type="text" value={ageGroup} placeholder="Age Group" readOnly />
         <input type="text" value={vehicleAge} placeholder="Vehicle Age" readOnly />
