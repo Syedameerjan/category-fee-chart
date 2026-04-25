@@ -87,15 +87,15 @@ const calculateVehicleAge = (date) => {
 
   const value = category.toUpperCase();
 
-  if (value.includes("A/R GOODS")) {
+  if (value.includes("A / R GoodS")) {
     type = "autoGoods";
-  } else if (value.includes("A/R")) {
+  } else if (value.includes("A / R")) {
     type = "auto";
-  } else if (value.includes("M/CAB 7")) {
+  } else if (value.includes("M / Cab, 7 seater")) {
     type = "car7";
-  } else if (value.includes("M/CAB")) {
+  } else if (value.includes("M / Cab")) {
     type = "car";
-  } else if (value.includes("AMBULANCE")) {
+  } else if (value.includes("Ambulance")) {
     type = "ambulance";
   }
 
