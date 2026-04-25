@@ -92,6 +92,15 @@ const triggerAnimation = (category) => {
   else if (value.includes("M/CAB 7 SEATER")) type = "car7";
   else if (value.includes("M/CAB")) type = "car";
   else if (value.includes("AMBULANCE")) type = "ambulance";
+  else if (value.includes("TATA")) type = "tata";
+  else if (value.includes("BUS")) type = "bus";
+  else if (value.includes("LMV")) type = "lmv";
+  else if (value.includes("HGV")) type = "hgv";
+  else if (value.includes("10")) type = "10";
+  else if (value.includes("12")) type = "12";
+  else if (value.includes("14")) type = "14";
+  else if (value.includes("16")) type = "16";
+  else if (value.includes("MGV")) type = "mgv";
 
   setAnimationType(type);
 
