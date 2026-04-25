@@ -120,7 +120,7 @@ const triggerAnimation = (category) => {
 //     setAnimationType("");
 //     setAnimationPhase("");
 //   }, 3200);
-// };
+};
 
 //
   ///
