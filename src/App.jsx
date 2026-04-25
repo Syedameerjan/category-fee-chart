@@ -10,6 +10,7 @@ function App() {
   const [amount, setAmount] = useState("");
   const [vehicleAge, setVehicleAge] = useState("");
   const [animationType, setAnimationType] = useState("");
+  const [animationPhase, setAnimationPhase] = useState("");
 
   // 🔹 Normalize helper
   const normalize = str =>
@@ -84,29 +85,34 @@ const calculateVehicleAge = (date) => {
 
 const triggerAnimation = (category) => {
   let type = "";
+  const value = normalize(category);
 
-  const value = normalize(category); // 🔥 IMPORTANT
+  if (value.includes("A/R GOODS")) type = "autoGoods";
+  else if (value === "A/R") type = "auto";
+  else if (value.includes("M/CAB 7 SEATER")) type = "car7";
+  else if (value.includes("M/CAB")) type = "car";
+  else if (value.includes("AMBULANCE")) type = "ambulance";
 
-  if (value.includes("A/R GOODS")) {
-    type = "autoGoods";
-  } else if (value === "A/R") {
-    type = "auto";
-  } else if (value.includes("M/CAB 7 SEATER")) {
-    type = "car7";
-  } else if (value.includes("M/CAB")) {
-    type = "car";
-  } else if (value.includes("AMBULANCE")) {
-    type = "ambulance";
-  }
+  setAnimationType(type);
 
-  // 🔥 Force re-trigger animation
-  setAnimationType("");
+  // 🔥 Phase 1: Enter
+  setAnimationPhase("enter");
+
+  // 🔥 Phase 2: Idle (after entering)
   setTimeout(() => {
-    setAnimationType(type);
-  }, 10);
+    setAnimationPhase("idle");
+  }, 600);
 
-  // Debug (optional)
-  console.log("Normalized Category:", value);
+  // 🔥 Phase 3: Exit (after 2s stay)
+  setTimeout(() => {
+    setAnimationPhase("exit");
+  }, 2600);
+
+  // 🔥 Reset
+  setTimeout(() => {
+    setAnimationType("");
+    setAnimationPhase("");
+  }, 3200);
 };
   
 const handleClear = () => {
@@ -203,13 +209,16 @@ const handleClear = () => {
         
         </div>
          <div className="animation-area">
-  {animationType === "auto" && <div className="vehicle auto">🛺</div>}
-  {animationType === "autoGoods" && <div className="vehicle autoGoods">🛺📦</div>}
-  {animationType === "car" && <div className="vehicle car">🚗</div>}
-  {animationType === "car7" && <div className="vehicle car7">🚙</div>}
-  {animationType === "ambulance" && <div className="vehicle ambulance">🚑</div>}
+  {animationType && (
+    <div className={`vehicle ${animationType} ${animationPhase}`}>
+      {animationType === "auto" && "🛺"}
+      {animationType === "autoGoods" && "🛺📦"}
+      {animationType === "car" && "🚗"}
+      {animationType === "car7" && "🚙"}
+      {animationType === "ambulance" && "🚑"}
+    </div>
+  )}
 </div>
-
 <div className="button-wrapper">
   <button onClick={fetchAmount}>FIND AMOUNT</button>
   <button onClick={handleClear} className="clear-btn">CLEAR</button>
