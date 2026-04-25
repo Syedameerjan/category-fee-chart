@@ -104,16 +104,30 @@ const triggerAnimation = (category) => {
   }, 600);
 
   // 🔥 Phase 3: Exit (after 2s stay)
-  setTimeout(() => {
-    setAnimationPhase("exit");
-  }, 2600);
 
-  // 🔥 Reset
-  setTimeout(() => {
-    setAnimationType("");
-    setAnimationPhase("");
-  }, 3200);
-};
+
+  //
+  ///
+  ///
+  ///
+  
+//   setTimeout(() => {
+//     setAnimationPhase("exit");
+//   }, 2600);
+
+//   // 🔥 Reset
+//   setTimeout(() => {
+//     setAnimationType("");
+//     setAnimationPhase("");
+//   }, 3200);
+// };
+
+//
+  ///
+  ///
+  
+
+
   
 const handleClear = () => {
   window.location.reload();
